@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/h62m33l79x4q2m81?svg=true)](https://ci.appveyor.com/project/Dima078/patt-task-2)
