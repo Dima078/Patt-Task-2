@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import lombok.Value;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.util.Locale;
@@ -50,10 +51,7 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getUser(String status) {
-            RegistrationDto user = new RegistrationDto();
-            user.setLogin(getRandomLogin());
-            user.setPassword(getRandomPassword());
-            user.setStatus(status);
+            RegistrationDto user = new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
             return user;
         }
 
@@ -64,42 +62,10 @@ public class DataGenerator {
         }
     }
 
+    @Value
     public static class RegistrationDto {
         String login;
         String password;
         String status;
-
-        public RegistrationDto(String login, String password, String status) {
-            this.login = login;
-            this.password = password;
-            this.status = status;
-        }
-
-        public RegistrationDto() {
-        }
-
-        public String getLogin() {
-            return login;
-        }
-
-        public void setLogin(String login) {
-            this.login = login;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
     }
 }
